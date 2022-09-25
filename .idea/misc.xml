@@ -3,7 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Armando/Documents/GitHub/CRUDSQlite/app/src/main/res/layout/activity_crear_base_dato.xml" value="0.1" />
         <entry key="..\:/Users/sampc/Downloads/CRUDSQL/CRUDSQlite/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.111" />
         <entry key="..\:/Users/sampc/Downloads/CRUDSQL/CRUDSQlite/app/src/main/res/drawable/attributes.xml" value="0.1" />
         <entry key="..\:/Users/sampc/Downloads/CRUDSQL/CRUDSQlite/app/src/main/res/drawable/buttonshape.xml" value="0.1" />
@@ -23,7 +22,9 @@
         <entry key="..\:/Users/sampc/Downloads/CRUDSQL/CRUDSQlite/app/src/main/res/drawable/linecod.xml" value="0.111" />
         <entry key="..\:/Users/sampc/Downloads/CRUDSQL/CRUDSQlite/app/src/main/res/drawable/money.xml" value="0.1" />
         <entry key="..\:/Users/sampc/Downloads/CRUDSQL/CRUDSQlite/app/src/main/res/drawable/save.xml" value="0.111" />
+        <entry key="..\:/Users/sampc/Downloads/CRUDSQL/CRUDSQlite/app/src/main/res/layout/activity_acercade.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/sampc/Downloads/CRUDSQL/CRUDSQlite/app/src/main/res/layout/activity_consulta_spinner.xml" value="0.1" />
+        <entry key="..\:/Users/sampc/Downloads/CRUDSQL/CRUDSQlite/app/src/main/res/layout/activity_crear_base_dato.xml" value="0.17255434782608695" />
         <entry key="..\:/Users/sampc/Downloads/CRUDSQL/CRUDSQlite/app/src/main/res/layout/activity_detalles_articulos.xml" value="0.1" />
         <entry key="..\:/Users/sampc/Downloads/CRUDSQL/CRUDSQlite/app/src/main/res/layout/activity_detalles_producto.xml" value="0.1" />
         <entry key="..\:/Users/sampc/Downloads/CRUDSQL/CRUDSQlite/app/src/main/res/layout/activity_list_view_articulos.xml" value="0.1" />
