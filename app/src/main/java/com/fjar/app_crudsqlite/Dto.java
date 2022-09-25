@@ -3,20 +3,29 @@ package com.fjar.app_crudsqlite;
 import java.io.Serializable;
 
 public class Dto implements Serializable {
-    private int Codigo;
-    private String Descripcion;
-    private double precio;
+    int Codigo;
+    String Descripcion;
+    double precio;
+    int idCategoria;
 
     public Dto() {
-
     }
 
-    public Dto(int codigo, String descripcion, double precio) {
+    public Dto(int codigo, String descripcion, double precio, int idCategoria) {
         Codigo = codigo;
         Descripcion = descripcion;
         this.precio = precio;
+        this.idCategoria = idCategoria;
     }
 
+
+
+    public int getIdCategoria(){
+        return idCategoria;
+    }
+    public void setIdCategoria(int idCategoria){
+        this.idCategoria = idCategoria;
+    }
     public int getCodigo()
     {
         return Codigo;
@@ -46,4 +55,6 @@ public class Dto implements Serializable {
 
         this.precio = precio;
     }
+
+
 }

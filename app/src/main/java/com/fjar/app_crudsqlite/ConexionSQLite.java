@@ -11,8 +11,6 @@ import android.icu.text.SimpleDateFormat;
 import android.util.Log;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -32,11 +30,24 @@ public class  ConexionSQLite extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-    db.execSQL("Create table articulos(codigo integer not null primary key, descripcion text, precio real, idCategoria integer not null, FOREIGN KEY(idCategoria)REFERENCES tb_categoria(idCategoria))");
-    db.execSQL("create table tb_categorias(idCategoria integer not null primary key autoincrement, nombreCategoria varchar, estadoCategoria integer, fechaRegistro datetime NOT NULL)");
+        //db.execSQL("Create table articulos(codigo integer not null primary key, descripcion text, precio real, idCategoria integer not null, FOREIGN KEY(idCategoria)REFERENCES tb_categoria(idCategoria))");
+        //db.execSQL("create table tb_categorias(idCategoria integer not null primary key autoincrement, nombreCategoria, estadoCategoria, fechaRegistro datetime NOT NULL)");
+        db. execSQL("create table tb_categorias (idCategoria integer(11) not null primary key, nombrecategoria varchar(50) not null, estadocategoria integer(11) not null, fecharegistro datetime not null)");
+        db. execSQL("create table articulos (codigo integer(11) not null primary key, descripcion varchar(100) not null, precio real not null, idCategoria integer(11) not null, FOREIGN KEY(idCategoria) REFERENCES tb_categorias(idCategoria))");
 
-    db.execSQL("insert into tb_categorias values(1,'Computadoras',1,datatime('now','localtime')),(2, 'Smarthphone',2, datatime('now','localtime')),(3,'SmarTv',1,datatime('now','localtime'))");
-    db.execSQL("insert into articulos values(1,'Lenovo',350.0,1),(2,'Samsung Galaxy',135.0,2),(3,'SmartTv LG',455.0,3)");
+        //INSERTAR DATOS A CATEGORIA PARA PRUEBA Y EJEMPLO
+        //  db.execSQL("insert into tb_categorias values(1, 'Telefono', 1, datetime('now','localtime')), (2, 'Tablets', 1, datetime('now','localtime')),(3, 'computadora', 1, datetime('now', 'localtime'))");
+        db. execSQL("insert into tb_categorias values(1, 'Smartphone', 1, datetime('now','localtime')), (2, 'Tablets', 1, datetime('now','localtime')), (3, 'Computadora', 1, datetime('now','localtime')) ");
+        //INSERTANDO REGISTRO EN LA TABLA ARTICULOS
+        // db.execSQL("insert into articulos values(4, 'Samsung', 300.0, 1), (2, 'Alcatel', 200.1, 2), (3, 'LAPTOP SAMSUNG', 240.0, 3)");
+        db. execSQL("insert into articulos values(1, 'Samsung Galaxy S6+', 255.0, 1), (2, 'Galaxy Tab S7+', 300.10, 2), (3, 'Laptop Toshiba Satellite A135-s2276', 599, 3)");
+        db. execSQL("insert into articulos values(4, 'Samsung Galaxy S10+', 300.3, 1), (5, 'Galaxy Tab S12+', 500.0, 2), (6, 'Laptop HP Pavilion 13-bb0501la', 1100.0, 3)");
+        //db.execSQL("insert into tb_categorias values('')");
+    }
+    private  String getDateTime(){
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+        Date date = new Date();
+        return  dateFormat.format(date);
     }
 
 
@@ -47,11 +58,6 @@ public class  ConexionSQLite extends SQLiteOpenHelper {
         db.execSQL("drop table if exists tb_categoria");
         onCreate(db);
     }
-    private  String getDateTime(){
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
-        Date date = new Date();
-        return  dateFormat.format(date);
-    }
 
     public SQLiteDatabase db(){
         SQLiteDatabase db = this.getWritableDatabase();
@@ -59,7 +65,7 @@ public class  ConexionSQLite extends SQLiteOpenHelper {
     }
 
     //Método que inserta los datos en la tabla de forma tradicional
-    public boolean InsertarTradicional (Dto datos){
+    public boolean InsertarTradicional(Dto datos){
         boolean estado = true;
         int resultado;
 
@@ -67,7 +73,8 @@ public class  ConexionSQLite extends SQLiteOpenHelper {
             int codigo = datos.getCodigo();
             String desc = datos.getDescripcion();
             double precio = datos.getPrecio();
-            int id= datos.getIdcategoria();
+
+            int id = datos.getIdCategoria();
 
             //Cursor fila = this.getWritableDatabase().rawQuery("Select codigo from articulos where codigo == " + codigo, null);
             Cursor fila = db().rawQuery("Select codigo from articulos Where codigo == " + codigo, null);
@@ -78,9 +85,9 @@ public class  ConexionSQLite extends SQLiteOpenHelper {
                 //estado = (Boolean) this.getWritableDatabase().insert("datos", "nombre, correo, telefono", registro);
                 //resultado = (int) this.getWritableDatabase().insert("usuarios", "nombres, apellidos, usuario, clave, pregunta, respuesta", registro);
                 String SQL = "Insert Into articulos \n" +
-                            "(codigo, descripcion, precio,idCategoria) \n" +
-                            "Values \n "+
-                            "('" + String.valueOf(codigo) + "', '" + desc + "', '" + String.valueOf(precio) + "','"+String.valueOf(id)+"');";
+                        "(codigo, descripcion, precio, idCategoria)\n" +
+                        "Values \n "+
+                        "('" + String.valueOf(codigo) + "', '" + desc + "', '" + String.valueOf(precio) + "', '"+ String.valueOf(id)+"');";
 
                 db().execSQL(SQL);
                 db().close();
@@ -315,7 +322,7 @@ public class  ConexionSQLite extends SQLiteOpenHelper {
         try {
             Cursor fila = db.rawQuery("select * from articulos",null);
             while (fila.moveToNext()){
-                articulos = new Dto();
+
                 articulos.setCodigo(fila.getInt(0));
                 articulos.setDescripcion(fila.getString(1));
                 articulos.setPrecio(fila.getDouble(2));
@@ -355,7 +362,7 @@ public class  ConexionSQLite extends SQLiteOpenHelper {
         try {
             Cursor fila = db.rawQuery("select * from articulos", null);
             while (fila.moveToNext()) {
-                articulos = new Dto();
+
                 articulos.setCodigo(fila.getInt(0));
                 articulos.setDescripcion(fila.getString(1));
                 articulos.setPrecio(fila.getDouble(2));
@@ -373,16 +380,18 @@ public class  ConexionSQLite extends SQLiteOpenHelper {
         }
         return listaArticulos;
     }
-        public List<Dto> mostrarArticulos(){
-            SQLiteDatabase bd = this.getReadableDatabase();
-            Cursor cursor = bd.rawQuery("SELECT * FROM articulos order by codigo desc", null);
-            List<Dto> articulos = new ArrayList<>();
-            if(cursor.moveToFirst()){
-                do{
-                    articulos.add(new Dto(cursor.getInt(0), cursor.getString(1), cursor.getDouble(2)));
-                }while (cursor.moveToNext());
-            }
-            return articulos;
+    public List<Dto> mostrarArticulos(){
+        SQLiteDatabase bd = this.getReadableDatabase();
+        Cursor cursor = bd.rawQuery("SELECT * FROM articulos order by codigo desc", null);
+        List<Dto> articulos = new ArrayList<>();
+        if(cursor.moveToFirst()){
+            do{
+                articulos.add(new Dto(cursor.getInt(0), cursor.getString(1), cursor.getDouble(2), cursor.getInt(3)));
+            }while (cursor.moveToNext());
         }
+        return articulos;
     }
+}
+
+
 
