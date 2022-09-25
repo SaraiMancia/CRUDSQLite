@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     boolean inputEt=false;
     boolean inputEd=false;
     boolean input1=false;
+
     int resultadoInsert=0;
 
     Modal ventanas = new Modal();
@@ -213,6 +214,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Intent recyclerView= new Intent(MainActivity.this, consulta_recyclerView.class);
             startActivity(recyclerView);
             return true;
+        }else if(id==R.id.action_acerca){
+            Intent AcercaDe = new Intent(MainActivity.this, AcercaDe.class);
+            startActivity(AcercaDe);
         }
 
         return super.onOptionsItemSelected(item);

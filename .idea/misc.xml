@@ -3,6 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Armando/Documents/GitHub/CRUDSQlite/app/src/main/res/layout/activity_acercade.xml" value="0.264" />
+        <entry key="..\:/Users/Armando/Documents/GitHub/CRUDSQlite/app/src/main/res/layout/activity_consulta_spinner.xml" value="0.20833333333333334" />
+        <entry key="..\:/Users/Armando/Documents/GitHub/CRUDSQlite/app/src/main/res/layout/activity_detalles_articulos.xml" value="0.20833333333333334" />
+        <entry key="..\:/Users/Armando/Documents/GitHub/CRUDSQlite/app/src/main/res/layout/activity_list_view_articulos.xml" value="0.20833333333333334" />
+        <entry key="..\:/Users/Armando/Documents/GitHub/CRUDSQlite/app/src/main/res/layout/activity_main.xml" value="0.20833333333333334" />
+        <entry key="..\:/Users/Armando/Documents/GitHub/CRUDSQlite/app/src/main/res/layout/activity_recycler_view.xml" value="0.20833333333333334" />
+        <entry key="..\:/Users/Armando/Documents/GitHub/CRUDSQlite/app/src/main/res/layout/content_main.xml" value="0.1480978260869565" />
+        <entry key="..\:/Users/Armando/Documents/GitHub/CRUDSQlite/app/src/main/res/layout/fragment_first.xml" value="0.20833333333333334" />
+        <entry key="..\:/Users/Armando/Documents/GitHub/CRUDSQlite/app/src/main/res/menu/menu_main.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/sampc/Downloads/CRUDSQL/CRUDSQlite/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.111" />
         <entry key="..\:/Users/sampc/Downloads/CRUDSQL/CRUDSQlite/app/src/main/res/drawable/attributes.xml" value="0.1" />
         <entry key="..\:/Users/sampc/Downloads/CRUDSQL/CRUDSQlite/app/src/main/res/drawable/buttonshape.xml" value="0.1" />
